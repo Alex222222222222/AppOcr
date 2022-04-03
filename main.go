@@ -17,57 +17,34 @@ import (
 
 var c *config.UserConfig
 
-/*
-func main() {
-
-	args := os.Args[1:]
-
-	c, err := config.ReadConfig("")
-	if err != nil {
-		panic(err)
-	}
-
-	res := appocr.AppocrMain(args[0], c)
-	fmt.Println(res)
-
-	config.SaveConfig(c)
-
-}
-*/
-
 func main() {
 	var err error
+
+	// read config if no user config exist, use default config
 	c, err = config.ReadConfig("")
 	if err != nil {
 		panic(err)
 	}
 
+	// init the clipboard, see "golang.design/x/clipboard"
 	err = clipboard.Init()
 	if err != nil {
 		panic(err)
 	}
 
+	// start the top bar item
 	systray.Run(onReady, onExit)
 }
 
 func onReady() {
-
+	// the app icon
 	icon, err := base64.StdEncoding.DecodeString(files.Icon)
 	if err != nil {
 		panic(err)
 	}
-
 	systray.SetIcon(icon)
-	//systray.SetTitle("AppOcr")
-	//systray.SetTooltip("AppOcr")
 
-	icon, err = base64.StdEncoding.DecodeString(files.QuitIcon)
-	if err != nil {
-		panic(err)
-	}
-	bQuit := systray.AddMenuItem("Quit", "Quit")
-	bQuit.SetIcon(icon)
-
+	// capture screenshot in interactive mode
 	icon, err = base64.StdEncoding.DecodeString(files.ScreenshotIcon)
 	if err != nil {
 		panic(err)
@@ -75,6 +52,7 @@ func onReady() {
 	bCaptureScreenShot := systray.AddMenuItem("Capture Screenshot", "Capture Screenshot")
 	bCaptureScreenShot.SetIcon(icon)
 
+	// scan qrcode
 	icon, err = base64.StdEncoding.DecodeString(files.ScanQRCodeIcon)
 	if err != nil {
 		panic(err)
@@ -82,6 +60,7 @@ func onReady() {
 	bQRCode := systray.AddMenuItem("Scan QRCode", "Scan QRCode")
 	bQRCode.SetIcon(icon)
 
+	// scan bar code
 	icon, err = base64.StdEncoding.DecodeString(files.ScanBarCodeIcon)
 	if err != nil {
 		panic(err)
@@ -89,6 +68,7 @@ func onReady() {
 	bBarCode := systray.AddMenuItem("Scan Bar Code", "Scan Bar Code")
 	bBarCode.SetIcon(icon)
 
+	// scan data matrix
 	icon, err = base64.StdEncoding.DecodeString(files.ScanDataMatrixIcon)
 	if err != nil {
 		panic(err)
@@ -96,12 +76,21 @@ func onReady() {
 	bDataMatrix := systray.AddMenuItem("Scan Data Matrix", "Scan Data Matrix")
 	bDataMatrix.SetIcon(icon)
 
+	// OCR
 	icon, err = base64.StdEncoding.DecodeString(files.ScanOcrIcon)
 	if err != nil {
 		panic(err)
 	}
 	bOCR := systray.AddMenuItem("OCR", "OCR")
 	bOCR.SetIcon(icon)
+
+	// quit the app
+	icon, err = base64.StdEncoding.DecodeString(files.QuitIcon)
+	if err != nil {
+		panic(err)
+	}
+	bQuit := systray.AddMenuItem("Quit", "Quit")
+	bQuit.SetIcon(icon)
 
 	go func() {
 		for {
@@ -304,4 +293,5 @@ func onReady() {
 
 func onExit() {
 	// clean up here
+	// nothing to clean up actually
 }

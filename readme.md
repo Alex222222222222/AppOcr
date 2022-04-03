@@ -4,6 +4,8 @@ A app for mac to capture screenshot, read qrcode, read barcode, read data matrix
 
 ## Configuration
 
+Default configuration is at $HOME/.config/appocr.toml
+
 ```
 # where to save your screen shot
 ScreenShotSaveDir = "/Users/username/Downloads"
@@ -28,6 +30,14 @@ CacheDir = "/Users/tesseract/Library/Caches/com.appocr"
   SpaceOCR = "chs"
   Tesseract = "chi_sim"
 ```
+
+## Install
+
+terminal-notifier need to be installed first. And the executable path of terminal-notifier needed to be set in the config file to let the notification work fine.
+
+## Permission
+
+The "Screen Recording" permission in the macos system Preference in the "Security & Privacy" is required.
 
 ## Languages
 

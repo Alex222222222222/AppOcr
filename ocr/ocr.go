@@ -15,6 +15,10 @@ import (
 	spacewrapper "github.com/ranghetto/go_ocr_space"
 )
 
+// I also cannot find pure golang ocr engine.
+// There is a opensource Tesseract golang wrapper, but there were error, when I tried to compile the app
+// Online space ocr work well, if you donot want to install tesseract. Register a space ocr api at the official website
+
 func ocrWithSpaceOcr(img *image.Image, c *config.UserConfig) (string, error) {
 	config := spacewrapper.InitConfig(c.SpaceOCRAPI, c.OcrLanguage[0].SpaceOCR)
 

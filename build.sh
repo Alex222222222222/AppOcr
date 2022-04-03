@@ -1,3 +1,4 @@
+# a developer codeSigningCertificate is required to sign the app
 codeSigningCertificate=""
 
 mkdir -p ./AppOcr.app/Contents/MacOS/

@@ -6,7 +6,13 @@ import (
 	"os"
 )
 
-func SaveFile(file string, path string, overwirite bool) error {
+// as I just cannot find a method to use golang to read the files in the .app/Contents/Resources, I stored necessary files as base64 encoding in the files subpackage
+
+func SaveFile(file string, path string, overwrite bool) error {
+	// save a base64 encoded file to the specified path
+	// file is the base64 encoded data of a file
+	// if there already exists a file at path, true value of overwrite will replace that file
+
 	f, err := base64.StdEncoding.DecodeString(file)
 	if err != nil {
 		return err
@@ -24,7 +30,7 @@ func SaveFile(file string, path string, overwirite bool) error {
 			return err
 		}
 
-	} else if overwirite {
+	} else if overwrite {
 		f1, err := os.Create(path)
 		if err != nil {
 			return err
