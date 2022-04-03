@@ -2,6 +2,8 @@ package code
 
 import (
 	"image"
+	_ "image/jpeg"
+	_ "image/png"
 	"strings"
 
 	"github.com/makiuchi-d/gozxing"
@@ -10,7 +12,7 @@ import (
 	"github.com/makiuchi-d/gozxing/qrcode"
 )
 
-func readBarcode(img *image.Image) (string, error) {
+func ReadBarcode(img *image.Image) (string, error) {
 
 	// prepare BinaryBitmap
 	bmp, err := gozxing.NewBinaryBitmapFromImage(*img)
@@ -30,6 +32,8 @@ func readBarcode(img *image.Image) (string, error) {
 		oned.NewUPCEReader(),
 	}
 
+	errOut := err
+
 	for i := 0; i < len(reader); i += 1 {
 		oneReader := reader[i]
 		res, err := oneReader.Decode(bmp, nil)
@@ -39,11 +43,15 @@ func readBarcode(img *image.Image) (string, error) {
 		if err == nil && len(res.GetText()) > 0 {
 			return res.GetText(), nil
 		}
+
+		errOut = err
+
 	}
-	return "", err
+
+	return "", errOut
 }
 
-func readQRCode(img *image.Image) (string, error) {
+func ReadQRCode(img *image.Image) (string, error) {
 
 	// prepare BinaryBitmap
 	bmp, err := gozxing.NewBinaryBitmapFromImage(*img)
@@ -60,7 +68,7 @@ func readQRCode(img *image.Image) (string, error) {
 	return result.GetText(), nil
 }
 
-func readDataMatrix(img *image.Image) (string, error) {
+func ReadDataMatrix(img *image.Image) (string, error) {
 
 	// prepare BinaryBitmap
 	bmp, err := gozxing.NewBinaryBitmapFromImage(*img)
