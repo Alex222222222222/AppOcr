@@ -1,5 +1,7 @@
 # AppOcr
 
+version: 1.0.1
+
 A app for mac to capture screenshot, read qrcode, read barcode, read data matrix, or use ocr to scan text. 
 
 ## Configuration
