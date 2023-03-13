@@ -16,6 +16,7 @@ type UserConfig struct {
 	TesseractExecutablePath        string
 	CacheDir                       string
 	TerminalNotifierExecutablePath string
+	DarkMode                       bool
 }
 
 type Language struct {
@@ -149,6 +150,7 @@ func GenerateDefaultConfig() (*UserConfig, error) {
 				Tesseract: "eng",
 			},
 		},
+		DarkMode: false,
 	}
 
 	if _, err := os.Stat(c.CacheDir); errors.Is(err, os.ErrNotExist) {

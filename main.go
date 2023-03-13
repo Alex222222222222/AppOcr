@@ -89,6 +89,14 @@ func onReady() {
 	if err != nil {
 		panic(err)
 	}
+	bChangeTheme := systray.AddMenuItem("Change Icon Theme", "Change Icon Theme")
+	bChangeTheme.SetIcon(icon)
+
+	// quit the app
+	icon, err = base64.StdEncoding.DecodeString(files.QuitIcon)
+	if err != nil {
+		panic(err)
+	}
 	bQuit := systray.AddMenuItem("Quit", "Quit")
 	bQuit.SetIcon(icon)
 
@@ -285,6 +293,12 @@ func onReady() {
 							panic(err)
 						}
 					}
+				}
+			case <-bChangeTheme.ClickedCh:
+				c.DarkMode = !c.DarkMode
+				err = config.SaveConfig(c)
+				if err != nil {
+					panic(err)
 				}
 			}
 		}
