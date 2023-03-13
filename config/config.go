@@ -154,7 +154,7 @@ func GenerateDefaultConfig() (*UserConfig, error) {
 	}
 
 	if _, err := os.Stat(c.CacheDir); errors.Is(err, os.ErrNotExist) {
-		os.MkdirAll(c.CacheDir, 751)
+		os.MkdirAll(c.CacheDir, os.ModeDir)
 	}
 
 	return &c, nil
