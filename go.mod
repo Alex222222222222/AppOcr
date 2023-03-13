@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/BurntSushi/toml v1.0.0
+	github.com/deckarep/gosx-notifier v0.0.0-20180201035817-e127226297fb
 	github.com/getlantern/systray v1.2.1
 	github.com/kbinani/screenshot v0.0.0-20210720154843-7d3a670d8329
 	github.com/makiuchi-d/gozxing v0.1.1
