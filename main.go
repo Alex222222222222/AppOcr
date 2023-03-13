@@ -1,13 +1,12 @@
 package main
 
 import (
-	"encoding/base64"
 	_ "image/jpeg"
 	_ "image/png"
 
 	"github.com/Alex222222222222/AppOcr/code"
 	"github.com/Alex222222222222/AppOcr/config"
-	"github.com/Alex222222222222/AppOcr/files"
+	"github.com/Alex222222222222/AppOcr/icons"
 	"github.com/Alex222222222222/AppOcr/notification"
 	"github.com/Alex222222222222/AppOcr/ocr"
 	"github.com/Alex222222222222/AppOcr/screenshot"
@@ -38,14 +37,14 @@ func main() {
 
 func onReady() {
 	// the app icon
-	icon, err := base64.StdEncoding.DecodeString(files.Icon)
+	icon, err := icons.GetIcon(icons.IconTypeApp, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
 	systray.SetIcon(icon)
 
 	// capture screenshot in interactive mode
-	icon, err = base64.StdEncoding.DecodeString(files.ScreenshotIcon)
+	icon, err = icons.GetIcon(icons.IconTypeCaptureScreenShot, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
@@ -53,7 +52,7 @@ func onReady() {
 	bCaptureScreenShot.SetIcon(icon)
 
 	// scan qrcode
-	icon, err = base64.StdEncoding.DecodeString(files.ScanQRCodeIcon)
+	icon, err = icons.GetIcon(icons.IconTypeScanQRCode, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
@@ -61,7 +60,7 @@ func onReady() {
 	bQRCode.SetIcon(icon)
 
 	// scan bar code
-	icon, err = base64.StdEncoding.DecodeString(files.ScanBarCodeIcon)
+	icon, err = icons.GetIcon(icons.IconTypeScanBarCode, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
@@ -69,7 +68,7 @@ func onReady() {
 	bBarCode.SetIcon(icon)
 
 	// scan data matrix
-	icon, err = base64.StdEncoding.DecodeString(files.ScanDataMatrixIcon)
+	icon, err = icons.GetIcon(icons.IconTYpeScanDataMatrix, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
@@ -77,15 +76,15 @@ func onReady() {
 	bDataMatrix.SetIcon(icon)
 
 	// OCR
-	icon, err = base64.StdEncoding.DecodeString(files.ScanOcrIcon)
+	icon, err = icons.GetIcon(icons.IconTypeOCR, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
 	bOCR := systray.AddMenuItem("OCR", "OCR")
 	bOCR.SetIcon(icon)
 
-	// quit the app
-	icon, err = base64.StdEncoding.DecodeString(files.QuitIcon)
+	// change the icon theme
+	icon, err = icons.GetIcon(icons.IconTypeChangeTheme, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
@@ -93,7 +92,7 @@ func onReady() {
 	bChangeTheme.SetIcon(icon)
 
 	// quit the app
-	icon, err = base64.StdEncoding.DecodeString(files.QuitIcon)
+	icon, err = icons.GetIcon(icons.IconTypeQuit, c.DarkMode)
 	if err != nil {
 		panic(err)
 	}
@@ -300,6 +299,8 @@ func onReady() {
 				if err != nil {
 					panic(err)
 				}
+
+				systray.Quit()
 			}
 		}
 	}()

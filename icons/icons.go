@@ -61,14 +61,13 @@ func GetIconRaw(iconType IconType, darkMode bool) (string, error) {
 		} else {
 			return files.QuitIcon, nil
 		}
-	/*
-		case IconTypeChangeTheme:
-			if darkMode {
-				return files.ChangeThemeIconDark, nil
-			} else {
-				return files.ChangeThemeIcon, nil
-			}
-	*/
+
+	case IconTypeChangeTheme:
+		if darkMode {
+			return files.ChangeThemeIconDark, nil
+		} else {
+			return files.ChangeThemeIcon, nil
+		}
 	case IconTypeScanBarCode:
 		if darkMode {
 			return files.ScanBarCodeIconDark, nil
