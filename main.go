@@ -300,7 +300,60 @@ func onReady() {
 					panic(err)
 				}
 
-				systray.Quit()
+				icon, err := icons.GetIcon(icons.IconTypeApp, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				systray.SetIcon(icon)
+
+				// capture screenshot in interactive mode
+				icon, err = icons.GetIcon(icons.IconTypeCaptureScreenShot, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bCaptureScreenShot.SetIcon(icon)
+
+				// scan qrcode
+				icon, err = icons.GetIcon(icons.IconTypeScanQRCode, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bQRCode.SetIcon(icon)
+
+				// scan bar code
+				icon, err = icons.GetIcon(icons.IconTypeScanBarCode, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bBarCode.SetIcon(icon)
+
+				// scan data matrix
+				icon, err = icons.GetIcon(icons.IconTYpeScanDataMatrix, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bDataMatrix.SetIcon(icon)
+
+				// OCR
+				icon, err = icons.GetIcon(icons.IconTypeOCR, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bOCR.SetIcon(icon)
+
+				// change the icon theme
+				icon, err = icons.GetIcon(icons.IconTypeChangeTheme, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bChangeTheme.SetIcon(icon)
+
+				// quit the app
+				icon, err = icons.GetIcon(icons.IconTypeQuit, c.DarkMode)
+				if err != nil {
+					panic(err)
+				}
+				bQuit.SetIcon(icon)
 			}
 		}
 	}()
