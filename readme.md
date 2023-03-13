@@ -2,7 +2,9 @@
 
 version: 1.0.1
 
-A app for mac to capture screenshot, read qrcode, read barcode, read data matrix, or use ocr to scan text. 
+A app in systray for mac to capture screenshot, read qrcode, read barcode, read data matrix, or use ocr to scan text. 
+
+![preview](./img/Screenshot%202023-03-13%20at%2013.26.23.png)
 
 ## Configuration
 
