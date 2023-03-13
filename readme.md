@@ -37,7 +37,13 @@ CacheDir = "/Users/tesseract/Library/Caches/com.appocr"
 
 ## Install
 
-terminal-notifier need to be installed first. And the executable path of terminal-notifier needed to be set in the config file to let the notification work fine.
+Just copy the app to Applications folder.
+
+To use OCREngine = "Tesseract", the Tesseract need to be installed explicitly.
+
+```bash
+brew install tesseract
+```
 
 ## Permission
 
