@@ -39,7 +39,7 @@ func ocrWithSpaceOcr(img *image.Image, c *config.UserConfig) (string, error) {
 
 func ocrWithTesseract(img *image.Image, c *config.UserConfig) (string, error) {
 	if _, err := os.Stat(c.CacheDir); errors.Is(err, os.ErrNotExist) {
-		os.Mkdir(c.CacheDir, os.FileMode(751))
+		os.MkdirAll(c.CacheDir, os.ModePerm)
 	}
 
 	f, err := os.Create(c.CacheDir + "/tesseract.png")
