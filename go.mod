@@ -9,7 +9,6 @@ require (
 	github.com/kbinani/screenshot v0.0.0-20210720154843-7d3a670d8329
 	github.com/makiuchi-d/gozxing v0.1.1
 	github.com/ranghetto/go_ocr_space v0.0.0-20190617120011-980751a8a409
-	github.com/skanehira/clipboard-image v1.0.0
 	golang.design/x/clipboard v0.6.1
 )
 
@@ -28,9 +27,9 @@ require (
 	github.com/oxtoacart/bpool v0.0.0-20190530202638-03653db5a59c // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	golang.org/x/exp v0.0.0-20190731235908-ec7cb31e5a56 // indirect
-	golang.org/x/image v0.0.0-20211028202545-6944b10bf410 // indirect
+	golang.org/x/image v0.5.0 // indirect
 	golang.org/x/mobile v0.0.0-20210716004757-34ab1303b554 // indirect
-	golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 )
